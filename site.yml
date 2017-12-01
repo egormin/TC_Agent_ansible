@@ -1,0 +1,7 @@
+- name: TC_agent_installation  
+  hosts:
+  - tc_agent
+
+  roles:
+- install_agent
+#- configure_agent
