@@ -1,0 +1,9 @@
+- name: ===================== Install Java =====================
+  yum:
+    name: java
+state: latest
+
+- name: ===================== Install libselinux-python =====================
+  yum:
+    name: libselinux-python
+state: latest
