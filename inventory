@@ -1,17 +1,21 @@
-[cust.megacorp]
-db1.dev.megacorp.com   dtap=dev  comment="Old database server"
-db2.dev.megacorp.com   dtap=dev  comment="New database server"
-test.megacorp.com      dtap=test 
-acc.megacorp.com       dtap=acc  comment="24/7 support"
-megacorp.com           dtap=prod comment="Hosting by Foo" ext_id="SRV_10029"
+[DEV_servers]
+10.6.98.55
 
-[os.redhat]
-megacorp.com
-acc.megacorp.com
-test.megacorp.com
-db2.dev.megacorp.com
+[QA_servers]
+10.6.99.31
 
-[os.debian]
-db1.dev.megacorp.com
+[PROD_servers]
+10.6.98.7
 
-tc_agent ansible_host=__myHost__ ansible_ssh_user=__myUser__ ansible_ssh_pass=__myPass__ ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+[app_domain:children]
+DEV_servers
+QA_servers
+PROD_servers
+
+[app_domain:vars]
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+ansible_ssh_user=__myUser__
+ansible_ssh_pass=__myPass__
+
+
+#tc_agent ansible_host=__myHost__ ansible_ssh_user=__myUser__ ansible_ssh_pass=__myPass__ ansible_ssh_common_args='-o StrictHostKeyChecking=no'
