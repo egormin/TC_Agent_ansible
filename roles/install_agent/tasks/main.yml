@@ -6,10 +6,11 @@
 
 - name: ===================== Install libselinux-python =====================
   yum:
-     with_items: 
+    name: "{{item.package}}"
+    state: latest
+  with_items: 
     - { package: 'libselinux-python' }
     - { package: 'unzip' }
-  state: latest
   become: yes
 
 - file:
