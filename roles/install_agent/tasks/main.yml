@@ -2,10 +2,10 @@
   yum:
     name: java
   state: latest
-  become: true
+  become: yes
 
 - name: ===================== Install libselinux-python =====================
   yum:
     name: libselinux-python
   state: latest
-  become: true
+  become: yes
