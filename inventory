@@ -7,12 +7,12 @@
 [PROD_servers]
 10.6.98.7
 
-[app_domain:children]
+[All_servers:children]
 DEV_servers
 QA_servers
 PROD_servers
 
-[app_domain:vars]
+[All_servers:vars]
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 ansible_ssh_user=__myUser__
 ansible_ssh_pass=__myPass__
