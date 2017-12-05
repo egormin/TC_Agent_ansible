@@ -1,11 +1,18 @@
 - name: ===================== Install Java =====================
-  yum:
+  yum:    
     name: java
   state: latest
   become: yes
 
 - name: ===================== Install libselinux-python =====================
   yum:
-    name: libselinux-python
+     with_items: 
+    - { package: 'libselinux-python' }
+    - { package: 'unzip' }
   state: latest
   become: yes
+
+- file:
+    path: '{{buildAgent_path}}'
+    state: directory
+    mode: 0755
