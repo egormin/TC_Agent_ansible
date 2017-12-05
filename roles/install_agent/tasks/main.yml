@@ -17,3 +17,4 @@
     path: '{{buildAgent_path}}'
     state: directory
     mode: 0755
+  become: yes
