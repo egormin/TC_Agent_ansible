@@ -13,8 +13,15 @@
     - { package: 'unzip' }
   become: yes
 
-- file:
+- name: ===================== Check if directory '{{buildAgent_path}}' exists =====================
+  file:
     path: '{{buildAgent_path}}'
     state: directory
     mode: 0755
   become: yes
+
+- name: ===================== Download build agent =====================
+  unarchive:
+    src: '{{TeamCity_url}}'/update/buildAgent.zip
+    dest: '{{buildAgent_path}}'
+remote_src: yes
