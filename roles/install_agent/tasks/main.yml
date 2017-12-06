@@ -26,3 +26,8 @@
     dest: '{{buildAgent_path}}'
     remote_src: yes
   become: yes
+
+- name: ==================== buildAgent config copying =================
+  template:
+    src: buildagent_properties.j2
+    dest: "{{buildAgent_path}}/conf/buildAgent.properties"
