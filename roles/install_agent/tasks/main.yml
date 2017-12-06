@@ -44,3 +44,4 @@
   service:
     name: teamcity-agent
     state: started
+  become: yes
