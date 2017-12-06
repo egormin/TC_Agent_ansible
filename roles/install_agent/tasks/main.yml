@@ -37,7 +37,7 @@
   template:
     src: buildAgent.j2
     dest: "/etc/init.d/{{TCAgentService_name}}"
-    mode: 0751
+    mode: 0755
   become: yes
 
 - name: ==================== TC agent start =================
