@@ -1,2 +1,2 @@
 buildAgent_path: '/opt/buildAgent/'
-TeamCity_url: 'http://10.6.98.57'
+TeamCity_url: 'http://10.6.98.57:9999'
