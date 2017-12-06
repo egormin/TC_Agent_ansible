@@ -30,4 +30,5 @@
 - name: ==================== buildAgent config copying =================
   template:
     src: buildagent_properties.j2
-    dest: "{{buildAgent_path}}/conf/buildAgent.properties"
+    dest: "{{buildAgent_path}}conf/buildAgent.properties"
+  become: yes
