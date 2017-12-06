@@ -1,7 +1,7 @@
 - name: ===================== Install Java =====================
   yum:    
     name: java
-  state: latest
+    state: latest
   become: yes
 
 - name: ===================== Install libselinux-python =====================
