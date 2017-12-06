@@ -42,5 +42,5 @@
 
 - name: ==================== TC agent start =================
   service:
-    name: '{{TCAgentService_name}}'
+    name: "{{TCAgentService_name}}"
     state: started
