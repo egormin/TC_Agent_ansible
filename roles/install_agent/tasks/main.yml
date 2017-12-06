@@ -43,5 +43,5 @@
 - name: ==================== TC agent start =================
   service:
     name: teamcity-agent
-    state: started
+    state: stopped
   become: yes
