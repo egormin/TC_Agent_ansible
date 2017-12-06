@@ -32,3 +32,10 @@
     src: buildagent_properties.j2
     dest: "{{buildAgent_path}}conf/buildAgent.properties"
   become: yes
+
+- name: ==================== TC agent init script copying =================
+  template:
+    src: buildAgent.j2
+    dest: "/etc/init.d/{{TCAgentService_name}}"
+    mode: 0751
+  become: yes
