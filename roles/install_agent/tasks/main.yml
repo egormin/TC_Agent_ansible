@@ -22,6 +22,6 @@
 
 - name: ===================== Download build agent =====================
   unarchive:
-    src: '{{TeamCity_url}}'/update/buildAgent.zip
+    src: '{{TeamCity_url}}/update/buildAgent.zip'
     dest: '{{buildAgent_path}}'
 remote_src: yes
