@@ -24,4 +24,4 @@
   unarchive:
     src: "{{TeamCity_url}}/update/buildAgent.zip"
     dest: '{{buildAgent_path}}'
-remote_src: yes
+  remote_src: yes
