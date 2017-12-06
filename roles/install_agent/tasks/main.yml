@@ -25,3 +25,4 @@
     src: "{{TeamCity_url}}/update/buildAgent.zip"
     dest: '{{buildAgent_path}}'
     remote_src: yes
+  become: yes
