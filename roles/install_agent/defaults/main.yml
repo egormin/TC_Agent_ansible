@@ -1,1 +1,2 @@
 buildAgent_path: '/opt/buildAgent/'
+TeamCity_url: 'http://35.197.76.250'
