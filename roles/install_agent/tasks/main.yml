@@ -43,5 +43,6 @@
 - name: ==================== TC agent start =================
   service:
     name: teamcity-agent
+    pattern: /etc/init.d
     state: started
   become: yes
