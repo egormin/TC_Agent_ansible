@@ -48,6 +48,6 @@
     enabled: True
   become: yes
 
-#- name: ==================== Register Agents ================
-#  command: registerAgents.py
-#  become: yes
+- name: ==================== Register Agents ================
+  command: registerAgents.py
+  become: yes
