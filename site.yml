@@ -4,4 +4,3 @@
 
   roles:
   - install_agent
-#- configure_agent
