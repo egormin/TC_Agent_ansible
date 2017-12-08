@@ -49,7 +49,7 @@
   become: yes
 
 - name: ==================== Wait until agent starts up =================
-  wait_for: timeout=40
+  wait_for: timeout=60
   delegate_to: localhost
 
 - name: ==================== Register Agents ================
