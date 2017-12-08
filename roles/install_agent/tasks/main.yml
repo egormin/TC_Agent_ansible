@@ -48,6 +48,9 @@
     enabled: True
   become: yes
 
-#- name: ==================== Register Agents ================
-#  command: registerAgents.py
-#  become: yes
+- name: ==================== Register Agents ================
+  agent_authorize:
+    hosts: all
+    tc_url: '{{TeamCity_url}}'
+    tc_user: '{{ tc_user }}'
+    tc_password: '{{ tc_password }}'
