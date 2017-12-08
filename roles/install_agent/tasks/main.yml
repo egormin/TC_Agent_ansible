@@ -48,8 +48,8 @@
     enabled: True
   become: yes
 
-- name: sleep for 30 seconds and continue with play
-  wait_for: timeout=30
+- name: ==================== Wait until agent starts up =================
+  wait_for: timeout=40
   delegate_to: localhost
 
 - name: ==================== Register Agents ================
