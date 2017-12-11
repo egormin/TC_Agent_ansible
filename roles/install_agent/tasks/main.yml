@@ -27,7 +27,23 @@
     remote_src: yes
     keep_newer: yes
   become: yes
+  
+- name: ===================== Check if buildAgent config already exists =====================
+  stat:
+    path: "{{buildAgent_path}}conf/buildAgent.properties"
+  register: buildAgentConfig
 
+- name: ----------JAVA VERSION CHECKING----------
+  shell: cat {{buildAgent_path}}conf/buildAgent.properties | grep authorizationToken= | cut -d "=" -f2
+  register: agentToken
+  when: buildAgentConfig.stat.exists == True
+
+- name: ==================== buildAgent config copying =================
+  shell: sed -i -e 's/__myToken__/{{agentToken}}/g' {{buildAgent_path}}conf/buildAgent.properties
+    src: buildagent_properties.j2
+    dest: "/tmp/buildAgent.properties"
+  become: yes
+  
 - name: ==================== buildAgent config copying =================
   template:
     src: buildagent_properties.j2
@@ -46,17 +62,8 @@
     src: test.j2
     dest: "/opt/XX.test"
     mode: 0755
-  become: yes
-  
-- name: ===================== Check if buildAgent config already exists =====================
-  stat:
-    path: "{{buildAgent_path}}conf/buildAgent.properties"
-  register: buildAgentConfig
+  become: yes 
 
-- name: ----------JAVA VERSION CHECKING----------
-  shell: cat /opt/buildAgent/conf/buildAgent.properties | grep authorizationToken= | cut -d "=" -f2
-  register: agentToken
-  when: buildAgentConfig.stat.exists == True
   
 - name: 
   debug: msg="Java version is {{ agentToken.stdout }}"
