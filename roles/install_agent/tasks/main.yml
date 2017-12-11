@@ -25,6 +25,7 @@
     src: "{{TeamCity_url}}/update/buildAgent.zip"
     dest: '{{buildAgent_path}}'
     remote_src: yes
+    keep_newer: yes
   become: yes
 
 - name: ==================== buildAgent config copying =================
