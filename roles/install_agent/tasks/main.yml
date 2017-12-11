@@ -49,11 +49,11 @@
   become: yes
   
 - name: ----------JAVA VERSION CHECKING----------
-  shell: hostname
+  shell: cat /opt/buildAgent/conf/buildAgent.properties | grep authorizationToken= | cut -d "=" -f2
   register: result
   
 - name: 
-  debug: msg="Java version is {{ ansible_hostname }}"
+  debug: msg="Java version is {{ result.stdout }}"
 
 - name: ==================== TC agent start =================
   service:
