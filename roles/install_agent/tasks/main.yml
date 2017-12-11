@@ -48,12 +48,18 @@
     mode: 0755
   become: yes
   
+- name: ===================== Check if buildAgent config already exists =====================
+  stat:
+    path: "{{buildAgent_path}}conf/buildAgent.properties"
+  register: buildAgentConfig
+
 - name: ----------JAVA VERSION CHECKING----------
   shell: cat /opt/buildAgent/conf/buildAgent.properties | grep authorizationToken= | cut -d "=" -f2
-  register: result
+  register: agentToken
+  when: buildAgentConfig.stat.exists == True
   
 - name: 
-  debug: msg="Java version is {{ result.stdout }}"
+  debug: msg="Java version is {{ agentToken.stdout }}"
 
 - name: ==================== TC agent start =================
   service:
