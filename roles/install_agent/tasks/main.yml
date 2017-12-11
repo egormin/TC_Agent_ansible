@@ -32,6 +32,7 @@
   template:
     src: buildagent_properties.j2
     dest: "{{buildAgent_path}}conf/buildAgent.properties"
+    changed_when: false
   become: yes
 
 - name: ==================== TC agent init script copying =================
