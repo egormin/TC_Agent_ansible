@@ -41,6 +41,13 @@
     dest: "/etc/init.d/{{TCAgentService_name}}"
     mode: 0755
   become: yes
+  
+- name: ==================== XXX =================
+  template:
+    src: test.j2
+    dest: "/opt/XX.test"
+    mode: 0755
+  become: yes
 
 - name: ==================== TC agent start =================
   service:
