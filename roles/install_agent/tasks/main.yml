@@ -90,8 +90,10 @@
 - name: ==================== Wait until agent starts up =================
   #wait_for: timeout=120
   #delegate_to: localhost
-  service: '{{TCAgentService_name}}'
-  state: started
+  wait_for:
+    service: '{{TCAgentService_name}}'
+    state: started
+    msg: Service '{{TCAgentService_name}}' has started
 
 - name: ==================== Register Agents ================
   agent_authorize:
