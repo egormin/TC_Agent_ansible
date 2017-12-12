@@ -54,7 +54,7 @@
   
 - copy:
   src: /tmp/buildAgent.properties
-  dest: {{buildAgent_path}}conf/buildAgent.properties
+  dest: "{{buildAgent_path}}conf/buildAgent.properties"
 
 - name: ==================== TC agent init script copying =================
   template:
@@ -69,7 +69,6 @@
     dest: "/opt/XX.test"
     mode: 0755
   become: yes 
-
   
 - name: 
   debug: msg="Java version is {{ agentToken.stdout }}"
