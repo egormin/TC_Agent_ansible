@@ -1,9 +1,6 @@
 [DEV_servers]
 10.6.98.55
 
-[QA_servers]
-10.6.99.31
-
 [PROD_servers]
 10.6.98.17
 
