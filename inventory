@@ -5,7 +5,7 @@
 10.6.99.31
 
 [PROD_servers]
-10.6.98.7
+10.6.98.17
 
 [All_servers:children]
 DEV_servers
