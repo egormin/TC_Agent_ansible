@@ -58,7 +58,7 @@
   copy:
     src: /tmp/buildAgent.properties
     dest: "{{buildAgent_path}}conf/buildAgent.properties"
-  become: yes
+    remote_src: yes
 
 - name: ==================== TC agent init script copying =================
   template:
