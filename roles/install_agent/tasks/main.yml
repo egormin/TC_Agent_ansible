@@ -58,6 +58,7 @@
   copy:
     src: /tmp/buildAgent.properties
     dest: "{{buildAgent_path}}conf/buildAgent.properties"
+  become: yes
 
 - name: ==================== TC agent init script copying =================
   template:
@@ -65,13 +66,6 @@
     dest: "/etc/init.d/{{TCAgentService_name}}"
     mode: 0755
   become: yes
-  
-- name: ==================== XXX =================
-  template:
-    src: test.j2
-    dest: "/opt/XX.test"
-    mode: 0755
-  become: yes 
   
 - name: 
   debug: msg="Java version is {{ agentToken.stdout }}"
