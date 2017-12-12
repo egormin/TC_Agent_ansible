@@ -76,7 +76,7 @@
   become: yes
   
 - name: 
-  debug: msg="Existing token for agent {{ ansible_hostname }} is: {{ agentToken.stdout }}"
+  debug: msg="Existing token for agent {{ ansible_hostname }} is {{ agentToken.stdout }}"
   when: buildAgentConfig.stat.exists == True
 
 - name: ==================== TC agent start =================
