@@ -97,3 +97,4 @@
     tc_url: '{{TeamCity_url}}'
     tc_user: '{{ tc_user }}'
     tc_password: '{{ tc_password }}'
+    no_log: True
