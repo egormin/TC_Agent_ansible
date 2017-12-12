@@ -38,7 +38,7 @@
   register: agentToken
   when: buildAgentConfig.stat.exists == True
   
-- name: ==================== buildAgent config copying =================
+- name: ==================== buildAgent config copying to /tmp =================
   template:
     src: buildagent_properties.j2
     dest: "/tmp/buildAgent.properties"
@@ -53,6 +53,7 @@
     path: /tmp/buildAgent.properties
     regexp: '^__myToken__'
     line: 'agentToken.stdout'
+  when: buildAgentConfig.stat.exists == True  
   become: yes
   
 - name: ==================== Agent token Changing to empty =================
@@ -62,6 +63,7 @@
     path: /tmp/buildAgent.properties
     regexp: '^__myToken__'
     line: ''
+  when: buildAgentConfig.stat.exists == False
   become: yes
   
 - name: ==================== Copying buildAgent.properties to '{{buildAgent_path}}conf' =================
