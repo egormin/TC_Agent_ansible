@@ -85,10 +85,7 @@
     pattern: /etc/init.d
     state: started
     enabled: True
-  become: yes  
-  
-- name: 
-  debug: msg="Existing token for agent {{service_apache_status.stdout }} is {{ service_apache_status.stdout }}"
+  become: yes
 
 - name: ==================== Wait until agent starts up =================
   wait_for: timeout=90
