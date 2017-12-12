@@ -86,14 +86,18 @@
     state: started
     enabled: True
   become: yes
+  
+- name: ==================== Check if Apache is running ====================
+  command: "service {{TCAgentService_name}} status"
+  register: service_apache_status
+  
+- name: 
+  debug: msg="Existing token for agent {{service_apache_status }} is {{ service_apache_status }}"
+
 
 - name: ==================== Wait until agent starts up =================
-  #wait_for: timeout=120
-  #delegate_to: localhost
-  wait_for:
-    service: '{{TCAgentService_name}}'
-    state: started
-    msg: Service '{{TCAgentService_name}}' has started
+  wait_for: timeout=120
+  delegate_to: localhost
 
 - name: ==================== Register Agents ================
   agent_authorize:
