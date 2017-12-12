@@ -80,6 +80,7 @@
   
 - name: 
   debug: msg="Java version is {{ agentToken.stdout }}"
+  when: buildAgentConfig.stat.exists == True
 
 - name: ==================== TC agent start =================
   service:
