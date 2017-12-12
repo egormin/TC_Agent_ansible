@@ -46,9 +46,13 @@
   become: yes
 
 - name: ==================== Agent token Changing to existing =================
-  shell: sed -i -e 's/__myToken__/{{agentToken.stdout}}/g' /tmp/buildAgent.properties
-  when: buildAgentConfig.stat.exists == True
-  become: yes
+  #shell: sed -i -e 's/__myToken__/{{agentToken.stdout}}/g' /tmp/buildAgent.properties
+  #when: buildAgentConfig.stat.exists == True
+  #become: yes
+  lineinfile:
+    path: /tmp/buildAgent.properties
+    regexp: '^__myToken__'
+    line: 'agentToken.stdout'
   
 - name: ==================== Agent token Changing to empty =================
   shell: sed -i -e 's/__myToken__//g' /tmp/buildAgent.properties
