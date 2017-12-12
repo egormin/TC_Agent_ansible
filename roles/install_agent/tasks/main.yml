@@ -92,7 +92,7 @@
   register: service_apache_status
   
 - name: 
-  debug: msg="Existing token for agent {{service_apache_status }} is {{ service_apache_status }}"
+  debug: msg="Existing token for agent {{service_apache_status.stdout }} is {{ service_apache_status.stdout }}"
 
 
 - name: ==================== Wait until agent starts up =================
