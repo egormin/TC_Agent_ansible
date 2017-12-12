@@ -52,10 +52,11 @@
 - name: ==================== Agent token Changing to empty =================
   shell: sed -i -e 's/__myToken__//g' /tmp/buildAgent.properties
   when: buildAgentConfig.stat.exists == False
-  
-- copy:
-  src: /tmp/buildAgent.properties
-  dest: "{{buildAgent_path}}conf/buildAgent.properties"
+ 
+- name: ==================== Copying buildAgent.properties to '{{buildAgent_path}}conf' =================
+  copy:
+    src: /tmp/buildAgent.properties
+    dest: "{{buildAgent_path}}conf/buildAgent.properties"
 
 - name: ==================== TC agent init script copying =================
   template:
