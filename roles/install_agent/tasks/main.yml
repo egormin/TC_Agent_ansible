@@ -52,7 +52,7 @@
   lineinfile:
     path: /tmp/buildAgent.properties
     regexp: '__myToken__'
-    line: 'agentToken.stdout'
+    line: '{{ agentToken.stdout }}'
   when: buildAgentConfig.stat.exists == True  
   become: yes
   
