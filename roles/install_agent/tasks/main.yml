@@ -42,6 +42,7 @@
   template:
     src: buildagent_properties.j2
     dest: "/tmp/buildAgent.properties"
+    mode: 0755
   become: yes
 
 - name: ==================== Agent token Changing to existing =================
