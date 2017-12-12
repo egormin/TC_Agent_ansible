@@ -51,7 +51,7 @@
   #become: yes
   lineinfile:
     path: /tmp/buildAgent.properties
-    regexp: '^__myToken__'
+    regexp: '__myToken__'
     line: 'agentToken.stdout'
   when: buildAgentConfig.stat.exists == True  
   become: yes
@@ -61,7 +61,7 @@
   #when: buildAgentConfig.stat.exists == False
   lineinfile:
     path: /tmp/buildAgent.properties
-    regexp: '^__myToken__'
+    regexp: '__myToken__'
     line: ''
   when: buildAgentConfig.stat.exists == False
   become: yes
