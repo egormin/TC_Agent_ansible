@@ -85,18 +85,14 @@
     pattern: /etc/init.d
     state: started
     enabled: True
-  become: yes
-  
-- name: ==================== Check if Apache is running ====================
-  command: "service {{TCAgentService_name}} status"
-  register: service_apache_status
+  become: yes  
   
 - name: 
   debug: msg="Existing token for agent {{service_apache_status.stdout }} is {{ service_apache_status.stdout }}"
 
 
 - name: ==================== Wait until agent starts up =================
-  wait_for: timeout=120
+  wait_for: timeout=90
   delegate_to: localhost
 
 - name: ==================== Register Agents ================
