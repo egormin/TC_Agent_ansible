@@ -53,6 +53,7 @@
     path: /tmp/buildAgent.properties
     regexp: '^__myToken__'
     line: 'agentToken.stdout'
+  become: yes
   
 - name: ==================== Agent token Changing to empty =================
   shell: sed -i -e 's/__myToken__//g' /tmp/buildAgent.properties
