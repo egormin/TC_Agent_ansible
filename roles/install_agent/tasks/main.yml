@@ -44,11 +44,11 @@
     dest: "/tmp/buildAgent.properties"
   become: yes
 
-- name: ==================== buildAgent config copying =================
+- name: ==================== Agent token Changing to existing =================
   shell: sed -i -e 's/__myToken__/{{agentToken}}/g' /tmp/buildAgent.properties
   when: buildAgentConfig.stat.exists == True
   
-- name: ==================== buildAgent config copying =================
+- name: ==================== Agent token Changing to empty =================
   shell: sed -i -e 's/__myToken__//g' /tmp/buildAgent.properties
   when: buildAgentConfig.stat.exists == False
   
