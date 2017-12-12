@@ -77,7 +77,7 @@
   
 - name: 
   debug: msg="Existing token for agent {{ ansible_hostname }} is {{ agentToken.stdout }}"
-  when: buildAgentConfig.stat.exists == True
+  when: buildAgentConfig.stat.exists == True 
 
 - name: ==================== TC agent start =================
   service:
@@ -89,7 +89,6 @@
   
 - name: 
   debug: msg="Existing token for agent {{service_apache_status.stdout }} is {{ service_apache_status.stdout }}"
-
 
 - name: ==================== Wait until agent starts up =================
   wait_for: timeout=90
