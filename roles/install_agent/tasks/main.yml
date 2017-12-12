@@ -33,22 +33,28 @@
     path: "{{buildAgent_path}}conf/buildAgent.properties"
   register: buildAgentConfig
 
-- name: ----------JAVA VERSION CHECKING----------
+- name: ---------- GET agent token ----------
   shell: cat {{buildAgent_path}}conf/buildAgent.properties | grep authorizationToken= | cut -d "=" -f2
   register: agentToken
   when: buildAgentConfig.stat.exists == True
-
-- name: ==================== buildAgent config copying =================
-  shell: sed -i -e 's/__myToken__/{{agentToken}}/g' {{buildAgent_path}}conf/buildAgent.properties
-    src: buildagent_properties.j2
-    dest: "/tmp/buildAgent.properties"
-  become: yes
   
 - name: ==================== buildAgent config copying =================
   template:
     src: buildagent_properties.j2
-    dest: "{{buildAgent_path}}conf/buildAgent.properties"
+    dest: "/tmp/buildAgent.properties"
   become: yes
+
+- name: ==================== buildAgent config copying =================
+  shell: sed -i -e 's/__myToken__/{{agentToken}}/g' /tmp/buildAgent.properties
+  when: buildAgentConfig.stat.exists == True
+  
+- name: ==================== buildAgent config copying =================
+  shell: sed -i -e 's/__myToken__//g' /tmp/buildAgent.properties
+  when: buildAgentConfig.stat.exists == False
+  
+- copy:
+  src: /tmp/buildAgent.properties
+  dest: {{buildAgent_path}}conf/buildAgent.properties
 
 - name: ==================== TC agent init script copying =================
   template:
