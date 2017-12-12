@@ -6,7 +6,6 @@
 
 [All_servers:children]
 DEV_servers
-QA_servers
 PROD_servers
 
 [All_servers:vars]
