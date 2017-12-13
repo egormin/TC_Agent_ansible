@@ -15,7 +15,7 @@ import optparse
 import sys
 import os
 import logging
-from mako import exceptions
+#from mako import exceptions
 import ansiblecmdb
 import ansiblecmdb.util as util
 import ansiblecmdb.render as render
