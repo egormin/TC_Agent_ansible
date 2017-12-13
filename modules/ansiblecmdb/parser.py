@@ -5,9 +5,11 @@ import traceback
 import logging
 if sys.version_info[0] == 2:
     # Python 2.x shlex doesn't support unicode
-    import ushlex as shlex
+    #import ushlex as shlex
+    pass
 else:
-    import shlex
+    #import shlex
+    pass
 try:
     import yaml
 except ImportError as err:
