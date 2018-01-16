@@ -13,16 +13,16 @@ USER={{buildAgent_user}}
 
 case "$1" in
 start)
- su - $USER -c "cd /opt/buildAgent/bin ; ./agent.sh start"
+ su - $USER -c "cd {{buildAgent_path}}bin ; ./agent.sh start"
 ;;
 stop)
- su - $USER -c "cd /opt/buildAgent/bin ; ./agent.sh stop"
+ su - $USER -c "cd {{buildAgent_path}}bin ; ./agent.sh stop"
 ;;
 status)
- su - $USER -c "cd /opt/buildAgent/bin ; ./agent.sh status"
+ su - $USER -c "cd {{buildAgent_path}}bin ; ./agent.sh status"
 ;;
 *)
-  echo "usage start/stop"
+  echo "usage start/stop/status"
   exit 1
  ;;
 
