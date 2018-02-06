@@ -4,49 +4,64 @@
 #   Required Agent Properties        #
 ######################################
 
-## The address of the TeamCity server. The same as is used to open TeamCity web interface in the browser.
-## Example:  serverUrl=https://buildserver.mydomain.com:8111
 serverUrl={{TeamCity_url}}
 
-## The unique name of the agent used to identify this agent on the TeamCity server
-## Use blank name to let server generate it.
-## By default, this name would be created from the build agent's host name
 name={{ ansible_hostname }}
 
-## Container directory to create default checkout directories for the build configurations.
-## TeamCity agent assumes ownership of the directory and will delete unknown directories inside.
 workDir=../work
 
-## Container directory for the temporary directories.
-## TeamCity agent assumes ownership of the directory. The directory may be cleaned between the builds.
 tempDir=../temp
 
-## Container directory for agent state files and caches.
-## TeamCity agent assumes ownership of the directory and can delete content inside.
-systemDir=../system
-
+ownPort=9091
 
 ######################################
 #   Optional Agent Properties        #
 ######################################
 
-## A token which is used to identify this agent on the TeamCity server for agent authorization purposes.
-## It is automatically generated and saved back on the first agent connection to the server.
 authorizationToken=__myToken__
 
 
 ######################################
 #   Default Build Properties         #
 ######################################
-## All properties starting with "system.name" will be passed to the build script as "name"
-## All properties starting with "env.name" will be set as environment variable "name" for the build process
-## Note that value should be properly escaped. (use "\\" to represent single backslash ("\"))
-## More on file structure: http://java.sun.com/j2se/1.5.0/docs/api/java/util/Properties.html#load(java.io.InputStream)
 
 # Build Script Properties
 
-#system.exampleProperty=example Value
+buildTools=%teamcity.agent.home.dir%/../buildTools
+
+system.proxy=http\://proxy.eu.compumark.com\:8080
+system.proxy.host=proxy.eu.compumark.com
+system.proxy.port=8080
+
+system.oracle.client.11.2.0=/oracle/base/product/11.2.0.3/client_1
+system.oracle.tnsadmin=/oracle/TNS_ADMIN
+system.oracle.client.10.2.0=/oracle/base/product/10.2.0/client_1
+
+system.JDK16=/SYS/LIB/JAVA/x86_64-jdk1.6.0_26
+system.JDK18=/SYS/LIB/JAVA/x86_64-jdk1.8.0_20
+system.JDK17=/SYS/LIB/JAVA/x86_64-jdk1.7.0_3
+
+system.devfiler.devdata=/misc/fs_dev002/qtnfs
+system.devfiler.devlib=/misc/fs_dev002/DEV/LIB
+system.devfiler.devshr=/misc/fs_dev002/DEV/SHR
+
+system.path.ssh=/bin/ssh
+system.path.bash=/bin/bash
+system.path.wget=/bin/wget
+system.path.perl=/bin/perl
+system.path.zip=/bin/zip
+system.path.ssh-agent=/bin/ssh-agent
+system.path.curl=/bin/curl
+system.path.unzip=/bin/unzip
+
 
 # Environment Variables
 
-#env.exampleEnvVar=example Env Value
+env.GRADLE_USER_HOME=%system.teamcity.build.tempDir%
+
+# Default Environment Variables
+
+
+# Specific Environment Variables
+
+system.tools.GRADLE_3.5=/buildspace/buildTools/gradle-3.5
