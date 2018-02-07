@@ -10,16 +10,20 @@
 ### END INIT INFO
 #Provide the correct user name:
 USER={{buildAgent_user}}
+JAVA_HOME={{boildTools_path}}{{java_home}}
 
 case "$1" in
 start)
- su - $USER -c "cd {{buildAgent_path}}bin ; ./agent.sh start"
+ #su - $USER -c "cd {{buildAgent_path}}bin ; ./agent.sh start"
+ su - $USER -c "{{buildAgent_path}}bin/agent.sh start"
 ;;
 stop)
- su - $USER -c "cd {{buildAgent_path}}bin ; ./agent.sh stop"
+ #su - $USER -c "cd {{buildAgent_path}}bin ; ./agent.sh stop"
+ su - $USER -c "{{buildAgent_path}}bin/agent.sh stop"
 ;;
 status)
- su - $USER -c "cd {{buildAgent_path}}bin ; ./agent.sh status"
+ #su - $USER -c "cd {{buildAgent_path}}bin ; ./agent.sh status"
+ su - $USER -c "{{buildAgent_path}}bin/agent.sh status"
 ;;
 *)
   echo "usage start/stop/status"
