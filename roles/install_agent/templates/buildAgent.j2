@@ -15,7 +15,7 @@ JAVA_HOME={{buildTools_path}}{{java_home}}
 case "$1" in
 start)
  #su - $USER -c "cd {{buildAgent_path}}bin ; ./agent.sh start"
- su - $USER -c "{{buildAgent_path}}bin/agent.sh start"
+ su - $USER -c "JAVA_HOME=$JAVA_HOME {{buildAgent_path}}bin/agent.sh start"
 ;;
 stop)
  #su - $USER -c "cd {{buildAgent_path}}bin ; ./agent.sh stop"
